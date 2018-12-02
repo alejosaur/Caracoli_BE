@@ -1,0 +1,2 @@
+class ProductionCenter < ApplicationRecord
+end

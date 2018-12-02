@@ -1,0 +1,2 @@
+class Fresh < ApplicationRecord
+end

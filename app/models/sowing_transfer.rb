@@ -1,0 +1,2 @@
+class SowingTransfer < ApplicationRecord
+end

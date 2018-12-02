@@ -1,0 +1,2 @@
+class LotFood < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class Frozen < ApplicationRecord
+end
