@@ -1,2 +1,0 @@
-class HarvestLot < ApplicationRecord
-end

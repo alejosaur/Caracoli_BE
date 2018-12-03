@@ -1,2 +1,0 @@
-class Frozen < ApplicationRecord
-end

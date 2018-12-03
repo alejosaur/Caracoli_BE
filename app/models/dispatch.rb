@@ -1,2 +1,0 @@
-class Dispatch < ApplicationRecord
-end

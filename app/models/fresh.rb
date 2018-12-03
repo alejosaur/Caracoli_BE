@@ -1,2 +1,0 @@
-class Fresh < ApplicationRecord
-end

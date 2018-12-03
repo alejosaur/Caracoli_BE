@@ -1,2 +1,0 @@
-class FryFarm < ApplicationRecord
-end

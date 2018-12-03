@@ -1,2 +1,0 @@
-class HarvestFood < ApplicationRecord
-end

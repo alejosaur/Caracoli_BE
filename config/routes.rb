@@ -1,19 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :fry_farms
-  resources :sowing_transfers
-  resources :harvest_lots
-  resources :lots
-  resources :lot_foods
-  resources :foods
-  resources :harvest_foods
-  resources :harvest_transfers
-  resources :production_centers
-  resources :harvests
-  resources :freshes
-  resources :frozens
-  resources :dispatches
-  resources :clients
   # Home controller routes.
   root   'home#index'
   get    'auth'            => 'home#auth'

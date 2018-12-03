@@ -1,2 +1,0 @@
-class ProductionCenter < ApplicationRecord
-end
