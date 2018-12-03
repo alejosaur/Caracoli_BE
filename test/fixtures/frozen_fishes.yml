@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  final_weight: 9.99
+  initial_weight: 9.99
+  final_weight: 9.99
+  size: 1
+  packing_date: 2018-12-03
+  harvest: one
+
+two:
+  final_weight: 9.99
+  initial_weight: 9.99
+  final_weight: 9.99
+  size: 1
+  packing_date: 2018-12-03
+  harvest: two

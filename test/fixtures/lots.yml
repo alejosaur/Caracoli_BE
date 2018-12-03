@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  males: 1
+  females: 1
+  species: MyString
+  weight: 9.99
+  date: 2018-12-03
+  fry_farms: one
+
+two:
+  males: 1
+  females: 1
+  species: MyString
+  weight: 9.99
+  date: 2018-12-03
+  fry_farms: two
