@@ -1,11 +1,11 @@
 require 'faker'
 
 fryFarm1 = FryFarm.create!(
-  nit: Faker::Number.number(10)
+  nit: Faker::Number.number(9)
 )
 
 fryFarm2 = FryFarm.create!(
-  nit: Faker::Number.number(10)
+  nit: Faker::Number.number(9)
 )
 
 food1 = Food.create!(
@@ -23,7 +23,7 @@ prodctr = ProductionCenter.create!(
 )
 
 client1 = Client.create!(
-  identification: Faker::Number.number(10),
+  identification: Faker::Number.number(9),
   name: Faker::Name.name,
   address: Faker::Address.street_address,
   city: Faker::Address.city,
@@ -32,7 +32,7 @@ client1 = Client.create!(
 )
 
 client2 = Client.create!(
-  identification: Faker::Number.number(10),
+  identification: Faker::Number.number(9),
   name: Faker::Name.name,
   address: Faker::Address.street_address,
   city: Faker::Address.city,
@@ -41,7 +41,7 @@ client2 = Client.create!(
 )
 
 client3 = Client.create!(
-  identification: Faker::Number.number(10),
+  identification: Faker::Number.number(9),
   name: Faker::Name.name,
   address: Faker::Address.street_address,
   city: Faker::Address.city,
@@ -53,18 +53,18 @@ client3 = Client.create!(
   lot1 = Lot.create!(
     fry_farm_id: fryFarm1.id,
     males: Faker::Number.number(5),
-    females: Faker::Number.number(10),
+    females: Faker::Number.number(9),
     species: Faker::Myst.creature,
-    weight: Faker::Number.number(10),
+    weight: Faker::Number.number(9),
     date: Faker::Date.backward(14)
   )
 
   lot2 = Lot.create!(
     fry_farm_id: fryFarm2.id,
     males: Faker::Number.number(5),
-    females: Faker::Number.number(10),
+    females: Faker::Number.number(9),
     species: Faker::Myst.creature,
-    weight: Faker::Number.number(10),
+    weight: Faker::Number.number(9),
     date: Faker::Date.backward(14)
   )
 
@@ -109,13 +109,13 @@ client3 = Client.create!(
   2.times do |row|
     harv1 = Harvest.create!(
       harvest_date: Faker::Date.backward(14),
-      final_weight: Faker::Number.number(10),
+      final_weight: Faker::Number.number(9),
       production_center_id: prodctr.id
     )
 
     harv2 = Harvest.create!(
       harvest_date: Faker::Date.backward(14),
-      final_weight: Faker::Number.number(10),
+      final_weight: Faker::Number.number(9),
       production_center_id: prodctr.id
     )
 
@@ -184,15 +184,15 @@ client3 = Client.create!(
 
     4.times do |row|
       frozen = FrozenFish.create!(
-        final_weight: Faker::Number.number(10),
-        initial_weight: Faker::Number.number(10),
+        final_weight: Faker::Number.number(9),
+        initial_weight: Faker::Number.number(9),
         size: Faker::Number.number(1),
         packing_date: Faker::Date.backward(14),
         harvest_id: harv1.id
       )
 
       fresh = FreshFish.create!(
-        final_weight: Faker::Number.number(10),
+        final_weight: Faker::Number.number(9),
         size: Faker::Number.number(1),
         harvest_id: harv2.id
       )
