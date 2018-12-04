@@ -55,7 +55,7 @@ client3 = Client.create!(
     males: Faker::Number.number(5),
     females: Faker::Number.number(9),
     species: Faker::Myst.creature,
-    weight: Faker::Number.number(9),
+    weight: Faker::Number.decimal(2)
     date: Faker::Date.backward(14)
   )
 
@@ -64,7 +64,7 @@ client3 = Client.create!(
     males: Faker::Number.number(5),
     females: Faker::Number.number(9),
     species: Faker::Myst.creature,
-    weight: Faker::Number.number(9),
+    weight: Faker::Number.decimal(2)
     date: Faker::Date.backward(14)
   )
 
@@ -109,13 +109,13 @@ client3 = Client.create!(
   2.times do |row|
     harv1 = Harvest.create!(
       harvest_date: Faker::Date.backward(14),
-      final_weight: Faker::Number.number(9),
+      final_weight: Faker::Number.decimal(2)
       production_center_id: prodctr.id
     )
 
     harv2 = Harvest.create!(
       harvest_date: Faker::Date.backward(14),
-      final_weight: Faker::Number.number(9),
+      final_weight: Faker::Number.decimal(2)
       production_center_id: prodctr.id
     )
 
@@ -184,15 +184,15 @@ client3 = Client.create!(
 
     4.times do |row|
       frozen = FrozenFish.create!(
-        final_weight: Faker::Number.number(9),
-        initial_weight: Faker::Number.number(9),
+        final_weight: Faker::Number.decimal(2)
+        initial_weight: Faker::Number.decimal(2)
         size: Faker::Number.number(1),
         packing_date: Faker::Date.backward(14),
         harvest_id: harv1.id
       )
 
       fresh = FreshFish.create!(
-        final_weight: Faker::Number.number(9),
+        final_weight: Faker::Number.decimal(2)
         size: Faker::Number.number(1),
         harvest_id: harv2.id
       )
