@@ -6,7 +6,7 @@ class CreateLots < ActiveRecord::Migration[5.2]
       t.string :species
       t.decimal :weight
       t.date :date
-      t.belongs_to :fry_farms, foreign_key: true
+      t.belongs_to :fry_farm, foreign_key: true
 
       t.timestamps
     end

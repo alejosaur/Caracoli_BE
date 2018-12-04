@@ -1,4 +1,4 @@
 class LotSerializer < ActiveModel::Serializer
   attributes :id, :males, :females, :species, :weight, :date
-  has_one :fry_farms
+  has_one :fry_farm
 end

@@ -46,6 +46,6 @@ class LotsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def lot_params
-      params.require(:lot).permit(:males, :females, :species, :weight, :date, :fry_farms_id)
+      params.require(:lot).permit(:males, :females, :species, :weight, :date, :fry_farm_id)
     end
 end

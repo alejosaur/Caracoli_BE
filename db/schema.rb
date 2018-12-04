@@ -144,10 +144,10 @@ ActiveRecord::Schema.define(version: 2018_12_03_222715) do
     t.string "species"
     t.decimal "weight"
     t.date "date"
-    t.integer "fry_farms_id"
+    t.integer "fry_farm_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["fry_farms_id"], name: "index_lots_on_fry_farms_id"
+    t.index ["fry_farm_id"], name: "index_lots_on_fry_farm_id"
   end
 
   create_table "production_centers", force: :cascade do |t|
