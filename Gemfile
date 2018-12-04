@@ -22,6 +22,7 @@ gem 'active_model_serializers'
 gem 'rack-cors'
 gem 'knock'
 gem 'jwt'
+gem 'faker'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 
