@@ -1,0 +1,1968 @@
+#Test with: http://editor.swagger.io/
+
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Caracoli-BE
+  description: Ruby on rails + postgres
+  license:
+    name: Caracoli-BE
+host: localhost:3000
+basePath: /
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /production_centers:
+    post:
+      summary: Enters a new production center
+      operationId: newProductionCenter
+      parameters:
+        - name: Production Center
+          in: body
+          required: true
+          description: Production Center Object
+          schema:
+            $ref: '#/definitions/ProductionCenterInput'
+      responses:
+        '201':
+          description: Ok
+          schema:
+            $ref: '#/definitions/ProductionCenter'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+    get:
+      summary: Returns all production centers
+      operationId: getAllProductionCenters
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/ProductionCentersList'
+        '406':
+          description: Not Acceptable (Invalid Params)
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+
+  /production_centers/{id}:
+    get:
+      summary: Returns a resident with the given id
+      operationId: getProductionCenterById
+      parameters:
+        - name: id
+          in: path
+          description: The id of the production center to be returned
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/ProductionCenter'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '406':
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/ErrorModel'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+
+    put:
+      summary: Updates a production center with the given id
+      operationId: updateProductionCenter
+      parameters:
+        - name: id
+          in: path
+          description: The id of the production center to be updated
+          required: true
+          type: integer
+        - name: ProductionCenter
+          in: body
+          required: true
+          description: Production Center Object
+          schema:
+            $ref: '#/definitions/ProductionCenterInput'
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/ProductionCenter'
+        '204':
+          description: No Content
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '406':
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/ErrorModel'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+
+    delete:
+      summary: Deletes a production center with the given id
+      operationId: deleteProductionCenter
+      parameters:
+        - name: id
+          in: path
+          description: The id of the production center to be deleted
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Ok
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '406':
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/ErrorModel'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+
+
+  /harvests:
+    post:
+      summary: Enters a new harvest
+      operationId: newHarvest
+      parameters:
+        - name: Harvest
+          in: body
+          required: true
+          description: Harvest Object
+          schema:
+            $ref: '#/definitions/HarvestInput'
+      responses:
+        '201':
+          description: Ok
+          schema:
+            $ref: '#/definitions/Harvest'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+    get:
+      summary: Returns all harvests
+      operationId: getAllHarvests
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/HarvestsList'
+        '406':
+          description: Not Acceptable (Invalid Params)
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+
+  /harvests/{id}:
+    get:
+      summary: Returns a harvest with the given id
+      operationId: getHarvestById
+      parameters:
+        - name: id
+          in: path
+          description: The id of the harvest to be returned
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/Harvest'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '406':
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/ErrorModel'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+
+    put:
+      summary: Updates a harvest with the given id
+      operationId: updateHarvest
+      parameters:
+        - name: id
+          in: path
+          description: The id of the harvest to be updated
+          required: true
+          type: integer
+        - name: Harvest
+          in: body
+          required: true
+          description: Harvest Object
+          schema:
+            $ref: '#/definitions/HarvestInput'
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/Harvest'
+        '204':
+          description: No Content
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '406':
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/ErrorModel'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+
+    delete:
+      summary: Deletes a harvest with the given id
+      operationId: deleteHarvest
+      parameters:
+        - name: id
+          in: path
+          description: The id of the harvest to be deleted
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Ok
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '406':
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/ErrorModel'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+
+
+  /fresh_fishes:
+    post:
+      summary: Enters a new fresh fish lot
+      operationId: newFreshFish
+      parameters:
+        - name: FreshFish
+          in: body
+          required: true
+          description: FreshFish Object
+          schema:
+            $ref: '#/definitions/FreshFishInput'
+      responses:
+        '201':
+          description: Ok
+          schema:
+            $ref: '#/definitions/FreshFish'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+    get:
+      summary: Returns all fresh fishes
+      operationId: getAllFreshFishes
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/FreshFishesList'
+        '406':
+          description: Not Acceptable (Invalid Params)
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+
+  /fresh_fishes/{id}:
+    get:
+      summary: Returns a fresh fish with the given id
+      operationId: getFreshFishById
+      parameters:
+        - name: id
+          in: path
+          description: The id of the fresh fish to be returned
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/FreshFish'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '406':
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/ErrorModel'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+    put:
+      summary: Updates a fresh fish with the given id
+      operationId: updateFreshFish
+      parameters:
+        - name: id
+          in: path
+          description: The id of the fresh fish to be updated
+          required: true
+          type: integer
+        - name: FreshFish
+          in: body
+          required: true
+          description: Fresh Fish Object
+          schema:
+            $ref: '#/definitions/FreshFishInput'
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/FreshFish'
+        '204':
+          description: No Content
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '406':
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/ErrorModel'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+    delete:
+      summary: Deletes a fresh fish with the given id
+      operationId: deleteFreshFish
+      parameters:
+        - name: id
+          in: path
+          description: The id of the fresh fish to be deleted
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Ok
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '406':
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/ErrorModel'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+
+
+  /frozen_fishes:
+    post:
+      summary: Enters a new frozen fish lot
+      operationId: newFrozenFish
+      parameters:
+        - name: FrozenFish
+          in: body
+          required: true
+          description: FrozenFish Object
+          schema:
+            $ref: '#/definitions/FrozenFishInput'
+      responses:
+        '201':
+          description: Ok
+          schema:
+            $ref: '#/definitions/FrozenFish'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+    get:
+      summary: Returns all frozen fishes
+      operationId: getAllFrozenFishes
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/FrozenFishesList'
+        '406':
+          description: Not Acceptable (Invalid Params)
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+
+  /frozen_fishes/{id}:
+    get:
+      summary: Returns a frozen fish with the given id
+      operationId: getFrozenFishById
+      parameters:
+        - name: id
+          in: path
+          description: The id of the frozen fish to be returned
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/FrozenFish'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '406':
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/ErrorModel'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+    put:
+      summary: Updates a frozen fish with the given id
+      operationId: updateFrozenFish
+      parameters:
+        - name: id
+          in: path
+          description: The id of the frozen fish to be updated
+          required: true
+          type: integer
+        - name: FrozenFish
+          in: body
+          required: true
+          description: Frozen Fish Object
+          schema:
+            $ref: '#/definitions/FrozenFishInput'
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/FrozenFish'
+        '204':
+          description: No Content
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '406':
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/ErrorModel'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+    delete:
+      summary: Deletes a frozen fish with the given id
+      operationId: deleteFrozenFish
+      parameters:
+        - name: id
+          in: path
+          description: The id of the frozen fish to be deleted
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Ok
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '406':
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/ErrorModel'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+
+
+  /harvest_transports:
+    post:
+      summary: Enters a new harvest transport
+      operationId: newHarvestTransport
+      parameters:
+        - name: HarvestTransport
+          in: body
+          required: true
+          description: HarvestTransport Object
+          schema:
+            $ref: '#/definitions/HarvestTransportInput'
+      responses:
+        '201':
+          description: Ok
+          schema:
+            $ref: '#/definitions/HarvestTransport'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+    get:
+      summary: Returns all harvest transports
+      operationId: getAllHarvestTransports
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/HarvestTransportsList'
+        '406':
+          description: Not Acceptable (Invalid Params)
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+
+  /harvest_transports/{id}:
+    get:
+      summary: Returns a harvest transport with the given id
+      operationId: getHarvestTransportById
+      parameters:
+        - name: id
+          in: path
+          description: The id of the harvest transport to be returned
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/HarvestTransport'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '406':
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/ErrorModel'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+    put:
+      summary: Updates a harvest transport with the given id
+      operationId: updateHarvestTransport
+      parameters:
+        - name: id
+          in: path
+          description: The id of the harvest transport to be updated
+          required: true
+          type: integer
+        - name: HarvestTransport
+          in: body
+          required: true
+          description: Harvest Transport Object
+          schema:
+            $ref: '#/definitions/HarvestTransportInput'
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/HarvestTransport'
+        '204':
+          description: No Content
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '406':
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/ErrorModel'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+    delete:
+      summary: Deletes a harvest transport with the given id
+      operationId: deleteHarvestTransport
+      parameters:
+        - name: id
+          in: path
+          description: The id of the harvest transport to be deleted
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Ok
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '406':
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/ErrorModel'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+
+
+  /fry_farms:
+    post:
+      summary: Enters a new fry farm
+      operationId: newFryFarm
+      parameters:
+        - name: FryFarm
+          in: body
+          required: true
+          description: FryFarm Object
+          schema:
+            $ref: '#/definitions/FryFarmInput'
+      responses:
+        '201':
+          description: Ok
+          schema:
+            $ref: '#/definitions/FryFarm'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+    get:
+      summary: Returns all fry farms
+      operationId: getAllFryFarms
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/FryFarmsList'
+        '406':
+          description: Not Acceptable (Invalid Params)
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+
+  /fry_farms/{id}:
+    get:
+      summary: Returns a fry farm with the given id
+      operationId: getFryFarmById
+      parameters:
+        - name: id
+          in: path
+          description: The id of the fry farm to be returned
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/FryFarm'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '406':
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/ErrorModel'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+    put:
+      summary: Updates a fry farm with the given id
+      operationId: updateFryFarm
+      parameters:
+        - name: id
+          in: path
+          description: The id of the fry farm to be updated
+          required: true
+          type: integer
+        - name: FryFarm
+          in: body
+          required: true
+          description: Fry Farm Object
+          schema:
+            $ref: '#/definitions/FryFarmInput'
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/FryFarm'
+        '204':
+          description: No Content
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '406':
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/ErrorModel'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+    delete:
+      summary: Deletes a fry farm with the given id
+      operationId: deleteFryFarm
+      parameters:
+        - name: id
+          in: path
+          description: The id of the fry farm to be deleted
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Ok
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '406':
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/ErrorModel'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+
+
+  /lot:
+    post:
+      summary: Enters a new lot
+      operationId: newLot
+      parameters:
+        - name: Lot
+          in: body
+          required: true
+          description: Lot Object
+          schema:
+            $ref: '#/definitions/LotInput'
+      responses:
+        '201':
+          description: Ok
+          schema:
+            $ref: '#/definitions/Lot'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+    get:
+      summary: Returns all lots
+      operationId: getLots
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/LotsList'
+        '406':
+          description: Not Acceptable (Invalid Params)
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+
+  /lots/{id}:
+    get:
+      summary: Returns a lot with the given id
+      operationId: getLotById
+      parameters:
+        - name: id
+          in: path
+          description: The id of the lot to be returned
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/Lot'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '406':
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/ErrorModel'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+    put:
+      summary: Updates a lot with the given id
+      operationId: updateLot
+      parameters:
+        - name: id
+          in: path
+          description: The id of the lot to be updated
+          required: true
+          type: integer
+        - name: Lot
+          in: body
+          required: true
+          description: Lot Object
+          schema:
+            $ref: '#/definitions/LotInput'
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/Lot'
+        '204':
+          description: No Content
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '406':
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/ErrorModel'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+    delete:
+      summary: Deletes a lot with the given id
+      operationId: deleteLot
+      parameters:
+        - name: id
+          in: path
+          description: The id of the lot to be deleted
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Ok
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '406':
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/ErrorModel'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+
+
+  /lot_transports:
+    post:
+      summary: Enters a new lot transport
+      operationId: newLotTransport
+      parameters:
+        - name: LotTransport
+          in: body
+          required: true
+          description: LotTransport Object
+          schema:
+            $ref: '#/definitions/LotTransportInput'
+      responses:
+        '201':
+          description: Ok
+          schema:
+            $ref: '#/definitions/LotTransport'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+    get:
+      summary: Returns all lot transports
+      operationId: getAllLotTransports
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/LotTransportsList'
+        '406':
+          description: Not Acceptable (Invalid Params)
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+
+  /lot_transports/{id}:
+    get:
+      summary: Returns a lot transport with the given id
+      operationId: getLotTransportById
+      parameters:
+        - name: id
+          in: path
+          description: The id of the lot transport to be returned
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/LotTransport'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '406':
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/ErrorModel'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+    put:
+      summary: Updates a lot transport with the given id
+      operationId: updateLotTransport
+      parameters:
+        - name: id
+          in: path
+          description: The id of the lot transport to be updated
+          required: true
+          type: integer
+        - name: LotTransport
+          in: body
+          required: true
+          description: Lot Transport Object
+          schema:
+            $ref: '#/definitions/LotTransportInput'
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/LotTransport'
+        '204':
+          description: No Content
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '406':
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/ErrorModel'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+    delete:
+      summary: Deletes a lot transport with the given id
+      operationId: deleteLotTransport
+      parameters:
+        - name: id
+          in: path
+          description: The id of the lot transport to be deleted
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Ok
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '406':
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/ErrorModel'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+
+
+  /harvest_lots:
+    post:
+      summary: Enters a new harvest-lot relationship
+      operationId: newHarvestLot
+      parameters:
+        - name: HarvestLot
+          in: body
+          required: true
+          description: HarvestLot Object
+          schema:
+            $ref: '#/definitions/HarvestLotInput'
+      responses:
+        '201':
+          description: Ok
+          schema:
+            $ref: '#/definitions/HarvestLot'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+    get:
+      summary: Returns all harvest-lot relationship
+      operationId: getAllHarvestLots
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/HarvestLotsList'
+        '406':
+          description: Not Acceptable (Invalid Params)
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+
+  /harvest_lots/{id}:
+    get:
+      summary: Returns a harvest-lot relationship with the given id
+      operationId: getHarvestlotById
+      parameters:
+        - name: id
+          in: path
+          description: The id of the harvest-lot relationship to be returned
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/HarvestLot'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '406':
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/ErrorModel'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+    put:
+      summary: Updates a harvest-lot relationship with the given id
+      operationId: updateHarvestLot
+      parameters:
+        - name: id
+          in: path
+          description: The id of the harvest-lot relationship to be updated
+          required: true
+          type: integer
+        - name: HarvestLot
+          in: body
+          required: true
+          description: Harvest-Lot Object
+          schema:
+            $ref: '#/definitions/HarvestLotInput'
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/HarvestLot'
+        '204':
+          description: No Content
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '406':
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/ErrorModel'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+    delete:
+      summary: Deletes a harvest-lot relationship with the given id
+      operationId: deleteHarvestLot
+      parameters:
+        - name: id
+          in: path
+          description: The id of the harvest-lot relationship to be deleted
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Ok
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '406':
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/ErrorModel'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+
+
+  /foods:
+    post:
+      summary: Enters a new food
+      operationId: newFood
+      parameters:
+        - name: Food
+          in: body
+          required: true
+          description: Food Object
+          schema:
+            $ref: '#/definitions/FoodInput'
+      responses:
+        '201':
+          description: Ok
+          schema:
+            $ref: '#/definitions/Food'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+    get:
+      summary: Returns all foods
+      operationId: getAllFoods
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/FoodsList'
+        '406':
+          description: Not Acceptable (Invalid Params)
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+
+  /foods/{id}:
+    get:
+      summary: Returns a food with the given id
+      operationId: getFoodById
+      parameters:
+        - name: id
+          in: path
+          description: The id of the food to be returned
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/Food'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '406':
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/ErrorModel'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+    put:
+      summary: Updates a food with the given id
+      operationId: updateFood
+      parameters:
+        - name: id
+          in: path
+          description: The id of the food to be updated
+          required: true
+          type: integer
+        - name: Food
+          in: body
+          required: true
+          description: Food Object
+          schema:
+            $ref: '#/definitions/FoodInput'
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/Food'
+        '204':
+          description: No Content
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '406':
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/ErrorModel'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+    delete:
+      summary: Deletes a food with the given id
+      operationId: deleteFood
+      parameters:
+        - name: id
+          in: path
+          description: The id of the food to be deleted
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Ok
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '406':
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/ErrorModel'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+
+
+  /food_in_lots:
+    post:
+      summary: Enters a new food-in-lot relationship
+      operationId: newFoodInLot
+      parameters:
+        - name: FoodInLot
+          in: body
+          required: true
+          description: FoodInLot Object
+          schema:
+            $ref: '#/definitions/FoodInLotInput'
+      responses:
+        '201':
+          description: Ok
+          schema:
+            $ref: '#/definitions/FoodInLot'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+    get:
+      summary: Returns all food-in-lot relationship
+      operationId: getAllFoodInLot
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/FoodInLotsList'
+        '406':
+          description: Not Acceptable (Invalid Params)
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+
+  /food_in_lots/{id}:
+    get:
+      summary: Returns a food-in-lot relationship with the given id
+      operationId: getFoodInLotById
+      parameters:
+        - name: id
+          in: path
+          description: The id of the food-in-lot relationship to be returned
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/FoodInLot'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '406':
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/ErrorModel'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+    put:
+      summary: Updates a food-in-lot relationship with the given id
+      operationId: updateFoodInLot
+      parameters:
+        - name: id
+          in: path
+          description: The id of the food-in-lot relationship to be updated
+          required: true
+          type: integer
+        - name: FoodInLot
+          in: body
+          required: true
+          description: Food-In-Lot Object
+          schema:
+            $ref: '#/definitions/FoodInLotInput'
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/FoodInLot'
+        '204':
+          description: No Content
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '406':
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/ErrorModel'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+    delete:
+      summary: Deletes a food-in-lot relationship with the given id
+      operationId: deleteFoodInLot
+      parameters:
+        - name: id
+          in: path
+          description: The id of the food-in-lot relationship to be deleted
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Ok
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '406':
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/ErrorModel'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+
+
+  /food_in_harvests:
+    post:
+      summary: Enters a new food-in-harvest relationship
+      operationId: newFoodInHarvest
+      parameters:
+        - name: FoodInHarvest
+          in: body
+          required: true
+          description: FoodInHarvest Object
+          schema:
+            $ref: '#/definitions/FoodInHarvestInput'
+      responses:
+        '201':
+          description: Ok
+          schema:
+            $ref: '#/definitions/FoodInHarvest'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+    get:
+      summary: Returns all food-in-harvest relationship
+      operationId: getAllFoodInHarvest
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/FoodInHarvestsList'
+        '406':
+          description: Not Acceptable (Invalid Params)
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+
+  /food_in_harvests/{id}:
+    get:
+      summary: Returns a food-in-harvest relationship with the given id
+      operationId: getFoodInHarvestById
+      parameters:
+        - name: id
+          in: path
+          description: The id of the food-in-harvest relationship to be returned
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/FoodInHarvest'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '406':
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/ErrorModel'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+    put:
+      summary: Updates a food-in-harvest relationship with the given id
+      operationId: updateFoodInHarvest
+      parameters:
+        - name: id
+          in: path
+          description: The id of the food-in-harvest relationship to be updated
+          required: true
+          type: integer
+        - name: FoodInHarvest
+          in: body
+          required: true
+          description: Food-In-Harvest Object
+          schema:
+            $ref: '#/definitions/FoodInHarvestInput'
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/FoodInHarvest'
+        '204':
+          description: No Content
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '406':
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/ErrorModel'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+    delete:
+      summary: Deletes a food-in-harvest relationship with the given id
+      operationId: deleteFoodInHarvest
+      parameters:
+        - name: id
+          in: path
+          description: The id of the food-in-harvest relationship to be deleted
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Ok
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '406':
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/ErrorModel'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+
+
+definitions:
+  ProductionCenter:
+    type: object
+    properties:
+      id:
+        type: integer
+
+  ProductionCentersList:
+    type: object
+    required:
+      - total
+    properties:
+      list:
+        type: array
+        items:
+          $ref: '#/definitions/ProductionCenter'
+
+  ProductionCenterInput:
+    type: object
+    properties:
+
+  Harvest:
+    type: object
+    properties:
+      id:
+        type: integer
+      harvest_date:
+        type: string
+        pattern: '^\d{2}-\d{2}-\d{4}$'
+      final_weight:
+        type: number
+        format: float
+      production_center_id:
+        type: integer
+
+  HarvestsList:
+    type: object
+    required:
+      - total
+    properties:
+      list:
+        type: array
+        items:
+          $ref: '#/definitions/Harvest'
+
+  HarvestInput:
+    type: object
+    properties:
+      harvest_date:
+        type: string
+        pattern: '^\d{2}-\d{2}-\d{4}$'
+      final_weight:
+        type: number
+        format: float
+      production_center_id:
+        type: integer
+
+  FreshFish:
+    type: object
+    properties:
+      id:
+        type: integer
+      size:
+        type: integer
+      initial_weight:
+        type: number
+        format: float
+      final_weight:
+        type: number
+        format: float
+      harvest_id:
+        type: integer
+
+  FreshFishesList:
+    type: object
+    required:
+      - total
+    properties:
+      list:
+        type: array
+        items:
+          $ref: '#/definitions/FreshFish'
+
+  FreshFishInput:
+    type: object
+    properties:
+      size:
+        type: integer
+      initial_weight:
+        type: number
+        format: float
+      final_weight:
+        type: number
+        format: float
+      harvest_id:
+        type: integer
+
+  FrozenFish:
+    type: object
+    properties:
+      id:
+        type: integer
+      size:
+        type: integer
+      initial_weight:
+        type: number
+        format: float
+      final_weight:
+        type: number
+        format: float
+      packing_date:
+        type: string
+        pattern: '^\d{2}-\d{2}-\d{4}$'
+      harvest_id:
+        type: integer
+
+  FrozenFishesList:
+    type: object
+    required:
+      - total
+    properties:
+      list:
+        type: array
+        items:
+          $ref: '#/definitions/FrozenFish'
+
+  FrozenFishInput:
+    type: object
+    properties:
+      size:
+        type: integer
+      initial_weight:
+        type: number
+        format: float
+      packing_date:
+        type: string
+        pattern: '^\d{2}-\d{2}-\d{4}$'
+      harvest_id:
+        type: integer
+
+  HarvestTransport:
+    type: object
+    properties:
+      id:
+        type: integer
+      transport_origin:
+        type: string
+      transport_destination:
+        type: string
+      transport_date:
+        type: string
+        pattern: '^\d{2}-\d{2}-\d{4}$'
+      harvest_id:
+        type: integer
+
+  HarvestTransportsList:
+    type: object
+    required:
+      - total
+    properties:
+      list:
+        type: array
+        items:
+          $ref: '#/definitions/HarvestTransport'
+
+  HarvestTransportInput:
+    type: object
+    properties:
+      transport_origin:
+        type: string
+      transport_destination:
+        type: string
+      transport_date:
+        type: string
+        pattern: '^\d{2}-\d{2}-\d{4}$'
+      harvest_id:
+        type: integer
+
+  FryFarm:
+    type: object
+    properties:
+      id:
+        type: integer
+      nit:
+        type: integer
+
+  FryFarmsList:
+    type: object
+    required:
+      - total
+    properties:
+      list:
+        type: array
+        items:
+          $ref: '#/definitions/FryFarm'
+
+  FryFarmInput:
+    type: object
+    properties:
+      nit:
+        type: integer
+
+  Lot:
+    type: object
+    properties:
+      id:
+        type: integer
+      males:
+        type: integer
+      females:
+        type: integer
+      species:
+        type: string
+      weight:
+        type: number
+        format: float
+      date:
+        type: string
+        pattern: '^\d{2}-\d{2}-\d{4}$'
+      fry_farm_id:
+        type: integer
+
+  LotsList:
+    type: object
+    required:
+      - total
+    properties:
+      list:
+        type: array
+        items:
+          $ref: '#/definitions/Lot'
+
+  LotInput:
+    type: object
+    properties:
+      males:
+        type: integer
+      females:
+        type: integer
+      species:
+        type: string
+      weight:
+        type: number
+        format: float
+      date:
+        type: string
+        pattern: '^\d{2}-\d{2}-\d{4}$'
+      fry_farm_id:
+        type: integer
+
+  LotTransport:
+    type: object
+    properties:
+      id:
+        type: integer
+      transport_origin:
+        type: string
+      transport_destination:
+        type: string
+      transport_date:
+        type: string
+        pattern: '^\d{2}-\d{2}-\d{4}$'
+      lot_id:
+        type: integer
+
+  LotTransportsList:
+    type: object
+    required:
+      - total
+    properties:
+      list:
+        type: array
+        items:
+          $ref: '#/definitions/LotTransport'
+
+  LotTransportInput:
+    type: object
+    properties:
+      transport_origin:
+        type: string
+      transport_destination:
+        type: string
+      transport_date:
+        type: string
+        pattern: '^\d{2}-\d{2}-\d{4}$'
+      lot_id:
+        type: integer
+
+  HarvestLot:
+    type: object
+    properties:
+      id:
+        type: integer
+      harvest_id:
+        type: integer
+      lot_id:
+        type: integer
+
+  HarvestLotsList:
+    type: object
+    required:
+      - total
+    properties:
+      list:
+        type: array
+        items:
+          $ref: '#/definitions/HarvestLot'
+
+  HarvestLotInput:
+    type: object
+    properties:
+      harvest_id:
+        type: integer
+      lot_id:
+        type: integer
+
+  Food:
+    type: object
+    properties:
+      id:
+        type: integer
+      brand:
+        type: string
+      weight_balance:
+        type: number
+        format: float
+
+  FoodsList:
+    type: object
+    required:
+      - total
+    properties:
+      list:
+        type: array
+        items:
+          $ref: '#/definitions/Food'
+
+  FoodInput:
+    type: object
+    properties:
+      brand:
+        type: string
+      weight_balance:
+        type: number
+        format: float
+
+  FoodInLot:
+    type: object
+    properties:
+      id:
+        type: integer
+      food_id:
+        type: integer
+      lot_id:
+        type: integer
+
+  FoodInLotsList:
+    type: object
+    required:
+      - total
+    properties:
+      list:
+        type: array
+        items:
+          $ref: '#/definitions/FoodInLot'
+
+  FoodInLotInput:
+    type: object
+    properties:
+      food_id:
+        type: integer
+      lot_id:
+        type: integer
+
+  FoodInHarvest:
+    type: object
+    properties:
+      id:
+        type: integer
+      food_id:
+        type: integer
+      harvest_id:
+        type: integer
+
+  FoodInHarvestsList:
+    type: object
+    required:
+      - total
+    properties:
+      list:
+        type: array
+        items:
+          $ref: '#/definitions/FoodInHarvest'
+
+  FoodInHarvestInput:
+    type: object
+    properties:
+      food_id:
+        type: integer
+      harvest_id:
+        type: integer
+
+# Errors
+  ErrorModel:
+    type: object
+    required:
+      - message
+    properties:
+      message:
+        type: string
