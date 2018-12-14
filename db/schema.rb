@@ -12,43 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2018_12_03_222715) do
 
-  create_table "clients", force: :cascade do |t|
-    t.integer "identification"
-    t.string "name"
-    t.string "address"
-    t.string "city"
-    t.string "phone"
-    t.string "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "dispatch_freshes", force: :cascade do |t|
-    t.integer "fresh_fish_id"
-    t.integer "dispatch_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["dispatch_id"], name: "index_dispatch_freshes_on_dispatch_id"
-    t.index ["fresh_fish_id"], name: "index_dispatch_freshes_on_fresh_fish_id"
-  end
-
-  create_table "dispatch_frozens", force: :cascade do |t|
-    t.integer "frozen_fish_id"
-    t.integer "dispatch_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["dispatch_id"], name: "index_dispatch_frozens_on_dispatch_id"
-    t.index ["frozen_fish_id"], name: "index_dispatch_frozens_on_frozen_fish_id"
-  end
-
-  create_table "dispatches", force: :cascade do |t|
-    t.date "dispatch_date"
-    t.integer "client_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["client_id"], name: "index_dispatches_on_client_id"
-  end
-
   create_table "food_in_harvests", force: :cascade do |t|
     t.integer "food_id"
     t.integer "harvest_id"
